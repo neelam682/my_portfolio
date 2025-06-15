@@ -15,12 +15,8 @@ import {
   git,
   figma,
   docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
   jobit,
+  carrent,
   tripguide,
   threejs,
 } from "../assets";

@@ -12,7 +12,7 @@ const CanvasLoader = () => (
 // Model Component
 const ComputersModel = ({ device }) => {
   const groupRef = useRef();
-  const { scene } = useGLTF("/Computer.glb");
+  const { scene } = useGLTF("/Computer-v2.glb");
 
   if (!scene) return null; // ❗ Prevents NaN if model fails
 
@@ -26,21 +26,19 @@ const ComputersModel = ({ device }) => {
   // Device-specific adjustments
   const updateDevice = () => {
     const width = window.innerWidth;
-    const isIpadPro =
-      /iPad/.test(navigator.userAgent) || (width >= 1024 && width <= 1366);
-
     if (width <= 480) setDevice("mobile");
-    else if (isIpadPro) setDevice("iPad Pro");
-    else if (width <= 1024) setDevice("tablet");
+    else if (width <= 768) setDevice("tablet");
+    else if (width <= 1024) setDevice("iPad Pro");
     else if (width <= 1440) setDevice("desktop");
     else setDevice("large");
   };
+
 
   const config = {
 
     mobile: {
       scale: 0.002,
-      position: [-0.2, -0.3, 0],
+      position: [-0.2, -0.4, 0],
     },
     tablet: {
       scale: 0.004,
@@ -48,9 +46,13 @@ const ComputersModel = ({ device }) => {
     },
     "iPad Pro": {
       scale: 0.004,
-      position: [-1.5, -0.5, 0],
+      position: [-9, -0.5, 0],
     },
     desktop: {
+      scale: 0.006,
+      position: [2, -1.2, -1],
+    },
+    large: {
       scale: 0.006,
       position: [2, -1.2, -1],
     },
